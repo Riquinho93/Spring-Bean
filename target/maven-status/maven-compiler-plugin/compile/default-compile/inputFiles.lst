@@ -1,4 +1,9 @@
 C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\myspringapp\WicketApplication.java
 C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\view\HomePage.java
+C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\service\ContatoService.java
+C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\dao\IContatoDao.java
+C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\dao\ContatoDao.java
+C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\hibernateUtil\HibernateUtil.java
+C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\service\IContatoService.java
 C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\view\SpringContato.java
 C:\Users\UNIKA\workspace\myprojectspring\src\main\java\com\model\Contato.java
