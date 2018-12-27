@@ -1,4 +1,4 @@
-package com.hibernateUtil;
+/*package com.hibernateUtil;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -34,3 +34,4 @@ public class HibernateUtil {
 		return factory;
 	}
 }
+*/

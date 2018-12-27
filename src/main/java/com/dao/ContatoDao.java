@@ -1,9 +1,9 @@
 package com.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.hibernateUtil.HibernateUtil;
 import com.model.Contato;
 
 @Repository
@@ -11,9 +11,10 @@ public class ContatoDao implements IContatoDao {
 
 //	private Class classe;
 	private Session session;
+	private SessionFactory sessionFactory;
 
 	public void SalvarOuAlterar(Contato contato) {
-		session = HibernateUtil.getFactory().openSession();
+		session = getSessionFactory().openSession();
 		session.beginTransaction();
 
 		session.saveOrUpdate(contato);
@@ -24,7 +25,7 @@ public class ContatoDao implements IContatoDao {
 
 	public Contato buscarPorId(Integer id) {
 
-		Session session = HibernateUtil.getFactory().openSession();
+		session = getSessionFactory().openSession();
 
 		Contato contato = (Contato) session.get(Contato.class, id);
 
@@ -34,7 +35,7 @@ public class ContatoDao implements IContatoDao {
 	}
 
 	public void excluir(Integer idFuncionario) {
-		Session session = HibernateUtil.getFactory().openSession();
+		session = getSessionFactory().openSession();
 		session.beginTransaction();
 
 		Contato funcionarioRemover = buscarPorId(idFuncionario);
@@ -50,6 +51,14 @@ public class ContatoDao implements IContatoDao {
 
 	public void setSession(Session session) {
 		this.session = session;
+	}
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 }

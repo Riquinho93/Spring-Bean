@@ -59,7 +59,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>  -->
-	 <servlet>
+	 <!-- <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>
             org.springframework.web.servlet.DispatcherServlet
@@ -75,6 +75,6 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/applicationContext.xml</param-value>
-  </context-param> 
+  </context-param>  -->
   
 </web-app>
