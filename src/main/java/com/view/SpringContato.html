@@ -4,18 +4,50 @@
 	<meta charset="UTF-8">
 	<title>Vamos la Spring!!!</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="estilo.css" type="text/css" media="screen"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </wicket:head>
-<body>
-  <div class="container-fluid" style="background-color: green;">
-	<h1 style="color: white;">Bão de mais so, Aprendendo Spring!!!</h1>
-	<h3 style="color: yellow;">Contato</h3>
-	<span style="color: yellow;"><Strong>Nome:</Strong></span>
+<body style="background-color: beige;">
+	<div class="container-fluid" style="background-color: green;">
+		<h1 style="color: white;">Bão de mais so, Aprendendo Spring!!!</h1>
+		<!-- <span style="color: yellow;"><Strong>Nome:</Strong></span>
 	<span style="color: white;" wicket:id="nome"></span><br />
 	<span style="color: yellow;"><Strong>Email:</Strong></span>
 	<span style="color: white;" wicket:id="email"></span><br />
 	<span style="color: yellow;"><Strong>Telefone:</Strong></span>
-	<span style="color: white;" wicket:id="telefone"></span>
- </div> 
+	<span style="color: white;" wicket:id="telefone"></span> -->
+	</div>
+	<div class="container-fluid">
+		<h3 style="color: green;">Contato</h3>
+		<table class="table table-bordered table">
+			<thead class="thead-dark">
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Telefone</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<a class="btn btn-success" style="float: right; color: white;">Filtrar
+				<i class="fas fa-plus"></i>
+			</a>
+			<br />
+			<br />
+			<tbody wicket:id="theContainer">
+				<tr wicket:id="listview">
+					<td class="text table-secondary" wicket:id="nome"></td>
+					<td class="text table-secondary" wicket:id="email" />
+					<td class="text table-secondary" wicket:id="telefone" />
+					<td class="text-center table-secondary">
+								<a class="btn btn-default" rel="tooltip"
+								title="Editar"> <i class="fas fa-pencil-alt"></i></a> 
+								<a class="btn btn-default modal-confirm"
+								title="Excluir"> <i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 
 </html>

@@ -1,64 +1,15 @@
 package com.dao;
 
+import java.io.Serializable;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.model.Contato;
 
 @Repository
-public class ContatoDao implements IContatoDao {
-
-//	private Class classe;
-	private Session session;
-	private SessionFactory sessionFactory;
-
-	public void SalvarOuAlterar(Contato contato) {
-		session = getSessionFactory().openSession();
-		session.beginTransaction();
-
-		session.saveOrUpdate(contato);
-
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	public Contato buscarPorId(Integer id) {
-
-		session = getSessionFactory().openSession();
-
-		Contato contato = (Contato) session.get(Contato.class, id);
-
-		session.close();
-
-		return contato;
-	}
-
-	public void excluir(Integer idFuncionario) {
-		session = getSessionFactory().openSession();
-		session.beginTransaction();
-
-		Contato funcionarioRemover = buscarPorId(idFuncionario);
-		session.delete(funcionarioRemover);
-
-		session.getTransaction().commit();
-		session.close();
-	}
-
-	public Session getSession() {
-		return session;
-	}
-
-	public void setSession(Session session) {
-		this.session = session;
-	}
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+public class ContatoDao extends GenericDao<Contato, Serializable> {
 
 }
