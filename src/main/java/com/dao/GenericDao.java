@@ -1,6 +1,8 @@
 package com.dao;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -10,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
 import com.googlecode.genericdao.search.Search;
+import com.model.Contato;
+import com.mysql.jdbc.PreparedStatement;
 
 public abstract class GenericDao<Entidade, id extends Serializable> extends GenericDAOImpl<Entidade, id> {
 	
@@ -79,6 +83,19 @@ public abstract class GenericDao<Entidade, id extends Serializable> extends Gene
 		session.close();
 		return userList;
 	
+	}
+	
+	public void pesquisar(String nome) {
+		try {
+			Connection conexao = null;
+			String sql= "select * from Contato where nome like ?";
+			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(sql);
+			ps.setString(1, nome + "%");
+			ps.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

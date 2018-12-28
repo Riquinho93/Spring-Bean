@@ -47,4 +47,8 @@ public class ContatoService implements IContatoService {
 		return contatoDao.searchDao(search);
 
 	}
+	
+	public void pesquisar(String nome) {
+		contatoDao.pesquisar(nome);
+	}
 }
