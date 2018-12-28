@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.googlecode.genericdao.dao.hibernate.GenericDAOImpl;
+import com.googlecode.genericdao.search.Search;
 
 public abstract class GenericDao<Entidade, id extends Serializable> extends GenericDAOImpl<Entidade, id> {
 	
@@ -69,6 +70,15 @@ public abstract class GenericDao<Entidade, id extends Serializable> extends Gene
 
 	public void setSession(Session session) {
 		this.session = session;
+	}
+	
+	public List<Entidade> searchDao(Search search) {
+		session = getSessionFactory().openSession();
+		session.beginTransaction();
+		List<Entidade> userList = search(search);
+		session.close();
+		return userList;
+	
 	}
 
 }

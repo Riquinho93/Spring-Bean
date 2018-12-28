@@ -2,15 +2,17 @@ package com.service;
 
 import java.util.List;
 
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.ContatoDao;
+import com.googlecode.genericdao.search.Search;
 import com.model.Contato;
 
 @Service
 public class ContatoService implements IContatoService {
-
+	@SpringBean(name = "contatoDao")
 	private ContatoDao contatoDao;
 
 	public void setContatoDao(ContatoDao contatoDao) {
@@ -39,5 +41,10 @@ public class ContatoService implements IContatoService {
 	@Transactional(readOnly = true)
 	public List<Contato> listar() {
 		return contatoDao.listar();
+	}
+	
+	public List<Contato> search(Search search) {
+		return contatoDao.searchDao(search);
+
 	}
 }
