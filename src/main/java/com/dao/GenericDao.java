@@ -59,7 +59,7 @@ public abstract class GenericDao<Entidade, id extends Serializable> extends Gene
 	@SuppressWarnings("unchecked")
 //	@Transactional(readOnly = true)
 	public List<Entidade> listar() {
-		Query query = getSessionFactory().getCurrentSession().createQuery("from Contato ");
+		Query query = getSessionFactory().getCurrentSession().createQuery("select c from Contato c order by c.nome");
 		List<Entidade> userList = query.list();
 		return userList;
 	}

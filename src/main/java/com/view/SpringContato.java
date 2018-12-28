@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigation;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -13,6 +14,9 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.list.PageableListView;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -28,7 +32,7 @@ public class SpringContato extends WebPage {
 	private ModalWindow modalWindow;
 	private List<Contato> contatoModels = new LinkedList<Contato>();
 
-	private ListView<Contato> listView = null;
+	private PageableListView<Contato> listView = null;
 	// Criando um container
 	private WebMarkupContainer listContainer = null;
 	private LoadableDetachableModel<List<Contato>> loadList;
@@ -44,6 +48,8 @@ public class SpringContato extends WebPage {
 		contatoModels = contatoService.listar();
 
 		// Metodo do container
+//		add(new PagingNavigation("nave", listView));
+
 		add(divConteiner());
 		add(filtrar());
 //		contato.buscarPorId((1);
@@ -75,7 +81,7 @@ public class SpringContato extends WebPage {
 			}
 		};
 		// Criando a lista View
-		listView = new ListView<Contato>("listview", loadList) {
+		listView = new PageableListView<Contato>("listview", loadList, 5) {
 
 			private static final long serialVersionUID = 1L;
 
@@ -94,7 +100,12 @@ public class SpringContato extends WebPage {
 		add(listView);
 		listView.setOutputMarkupId(true);
 		listContainer.add(listView);
+		add(new PagingNavigator("nave", listView));
 
+	/*	PagingNavigation navigation = new PagingNavigation("nave", listView);
+		navigation.setOutputMarkupId(true);
+		add(navigation);
+		listContainer.add(navigation);*/
 		return listContainer;
 	}
 
